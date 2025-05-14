@@ -1,0 +1,7 @@
+from django.urls import path, include
+from . import views
+
+urlpatterns = [
+    path('', views.task, name='task'),
+    path('<int:id>/', views.getTaskById, name='getTaskById')
+]
