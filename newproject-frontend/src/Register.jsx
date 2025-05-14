@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+const serverURL = 'https://task-ca6l.onrender.com'
+
 export default function Register(){
     const[username, setUsername] = useState('')
     const[email, setEmail] = useState('')
@@ -69,7 +71,7 @@ async function checkAuth(){
     }
     try{
         if(localStorage.getItem("token")){
-            const response = await fetch("http://localhost:8000/authentication/check/",request)
+            const response = await fetch(serverURL + "/authentication/check/",request)
             if(response.status === 200){
                 return true;
             } else if(response.status===401){
@@ -104,7 +106,7 @@ async function registerRequest(username, password, email, firstName, lastName){
         })
     }
     try{
-        const response = await fetch("http://127.0.0.1:8000/authentication/register/", request)
+        const response = await fetch(serverURL + "/authentication/register/", request)
         if (response.status === 201){
             const data = await response.json()
             localStorage.setItem("token", data.token);

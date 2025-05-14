@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
+const serverURL = 'https://task-ca6l.onrender.com'
+
 export default function EditCard(){
     const navigate = useNavigate()
     const { state } = useLocation()
@@ -18,7 +20,7 @@ export default function EditCard(){
     }
     useEffect(()=>{
         async function fetchData(){
-            const res = await fetch(`http://127.0.0.1:8000/tasks/${id}/`, request)
+            const res = await fetch(serverURL + `/tasks/${id}/`, request)
             .then(async (response) => {
                 const data = await response.json()
                 console.log(data)
@@ -51,7 +53,7 @@ export default function EditCard(){
                                     'Content-type': 'application/json',
                                 },
                             }
-                            await fetch(`http://127.0.0.1:8000/tasks/${id}/`, request)
+                            await fetch(serverURL + `/tasks/${id}/`, request)
                             navigate('/tasks/')
                         } catch(err) {
                             setError(err)
@@ -68,7 +70,7 @@ export default function EditCard(){
                                 description: description,
                             })
                         }
-                        const response = await fetch(`http://127.0.0.1:8000/tasks/${id}/`, request)
+                        const response = await fetch(serverURL + `/tasks/${id}/`, request)
                         navigate('/tasks/')
 
                     } catch(err){

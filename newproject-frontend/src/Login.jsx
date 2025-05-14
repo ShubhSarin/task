@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-
+const serverURL = 'https://task-ca6l.onrender.com'
 
 export default function Login(){
     const [username, setUsername] = useState("");
@@ -59,7 +59,7 @@ async function checkAuth(){
         },
     }
     try{
-        const response = await fetch("http://localhost:8000/authentication/check/",request)
+        const response = await fetch(serverURL + "/authentication/check/",request)
         if(response.status === 200){
             return true;
         } else {
@@ -72,7 +72,7 @@ async function checkAuth(){
 }
 
 function loginRequest(username, password){
-    return fetch("http://localhost:8000/authentication/login/", {
+    return fetch(serverURL + "/authentication/login/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

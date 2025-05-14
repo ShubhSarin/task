@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+const serverURL = 'https://task-ca6l.onrender.com'
+
 export default function NewTask(){
     const navigate = useNavigate()
     const[title, setTitle] = useState('')
@@ -37,7 +39,7 @@ export default function NewTask(){
                                 description: description,
                             })
                         }
-                        await fetch(`http://127.0.0.1:8000/tasks/`, request)
+                        await fetch(serverURL + `/tasks/`, request)
                         navigate('/tasks/')
                     } catch(err){
                         setError(err)

@@ -1,6 +1,8 @@
 import { CiTrash, CiEdit } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 
+const serverURL = 'https://task-ca6l.onrender.com'
+
 export default function Card({data}){
     const formattedDate = new Date(data.updated_at).toLocaleDateString()
     const formattedTime = new Date(data.updated_at).toLocaleTimeString()
@@ -20,7 +22,7 @@ export default function Card({data}){
                             'Content-type': 'application/json'
                         }
                     }
-                    await fetch(`http://127.0.0.1:8000/tasks/${data.id}/`, request)
+                    await fetch(serverURL + `/tasks/${data.id}/`, request)
                 }}/>
             </div>
 

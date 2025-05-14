@@ -3,6 +3,9 @@ import { Button } from "@/components/ui/button"
 import { useNavigate } from "react-router-dom";
 import Card from "./TaskCard";
 
+
+const serverURL = 'https://task-ca6l.onrender.com'
+
 export default function Tasks(){
     const [tasks, setTasks] = useState([]);
     const [task, setTask] = useState("");
@@ -55,11 +58,11 @@ function logout(){
             "Authorization": "Token " + localStorage.getItem("token"),
         }
     }
-    return fetch("http://localhost:8000/authentication/logout/", request)
+    return fetch(serverURL + "/authentication/logout/", request)
 }
 
 async function getTasks(){
-    return fetch("http://localhost:8000/tasks/", {
+    return fetch(serverURL + "/tasks/", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
