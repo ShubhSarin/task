@@ -10,6 +10,10 @@ from django.shortcuts import get_object_or_404
 
 @api_view(['POST'])
 def register(request):
+    if User.objects.filter(username=request.data.get('username')).exists():
+        return response.Response({'error': 'Username already exist'}, status=status.HTTP_400_BAD_REQUEST)
+    if User.objects.filter(email=request.data.get('email')).exists():
+        return response.Response({'error': 'Email already exist'}, status=status.HTTP_400_BAD_REQUEST)
     if request.method == 'POST':
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
