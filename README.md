@@ -2,6 +2,7 @@
 
 ### Currently Hosted on Render.com - https://task-ca6l.onrender.com
 
+Frontend Repo - https://github.com/ShubhSarin/tasksFrontend
 ## I made it using django REST Framework and implemented following things:
 ### Authentication:
 - Register: /authentication/register/ 
